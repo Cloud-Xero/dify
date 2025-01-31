@@ -7,6 +7,11 @@ git pull upstream main
 git push origin main
 ```
 
+## ローカルでの起動方法
+基本的には[README](./README.md)を参照
+Dockerを起動してコマンド実行してコンテナを起動させたら、http://localhost/apps にアクセス
+
+
 ## 別リポジトリから参照したい場合
 1. 追加したいリポジトリ先で以下のコマンドを実行
   ```
@@ -36,3 +41,8 @@ git push origin main
     git commit -m "Update dify submodule"
     git push origin main
     ```
+
+## DSLについて
+- DSL（Dify.AIが定めるAIアプリケーション開発のための標準ファイルフォーマット(YML)）は、現状GUI上からでしかインポートできない
+- 追加先のリポジトリ内で`dsl`フォルダを作成してそこにファイルを格納して管理する
+- [公式ドキュメント](https://docs.dify.ai/ja-jp/guides/application-orchestrate/creating-an-application#dslfairukara)
