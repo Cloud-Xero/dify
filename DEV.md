@@ -46,3 +46,18 @@ Dockerを起動してコマンド実行してコンテナを起動させたら�
 - DSL（Dify.AIが定めるAIアプリケーション開発のための標準ファイルフォーマット(YML)）は、現状GUI上からでしかインポートできない
 - 追加先のリポジトリ内で`dsl`フォルダを作成してそこにファイルを格納して管理する
 - [公式ドキュメント](https://docs.dify.ai/ja-jp/guides/application-orchestrate/creating-an-application#dslfairukara)
+
+
+## トラブルシューティング
+### Gemini が使用できない（2025/03/08時点）
+APIキーを登録しようとすると以下のようなエラーが発生
+```bash
+404 models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
+```
+gemini-pro がサポートされていない可能性があるため、使用できるモデルを確認
+```bash
+$ curl -X GET "https://generativelanguage.googleapis.com/v1/models?key=YOUR_API_KEY"
+```
+gemini-pro というモデルが 存在しないため発生していたことが発覚。
+Dify側のコードをいじってみたが解決せず。
+修正されるのを待って、一旦他のLLMを使用することに
